@@ -10,10 +10,10 @@ define php::ini (
   $template,
   $dir_php_confd,
   $error_log,
-  $ensure = file,
-  $path   = $title,
-  $notify = undef,
-  $noops  = undef,
+  $ensure     = file,
+  $path       = $title,
+  $notify_res = undef,
+  $noops      = undef,
 ) {
 
   file { $title :
@@ -23,7 +23,7 @@ define php::ini (
     group   => $group,
     mode    => $mode,
     content => template($template),
-    notify  => $notify,
+    notify  => $notify_res,
     noop    => $noops,
   }
 

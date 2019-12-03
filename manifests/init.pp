@@ -19,7 +19,7 @@ class php (
   $template_php_cli_ini  = $::php::params::template_php_cli_ini,
   $dir_php_cli_confd     = $::php::params::dir_php_cli_confd,
   $cli_error_log         = $::php::params::php_cli_error_log,
-  $notify                = undef,
+  $notify_res            = undef,
   $mod_packages          = $::php::params::mod_packages,
   $mod_pecl_packages     = $::php::params::mod_pecl_packages,
   $mod_pear_packages     = $::php::params::mod_pear_packages,
@@ -48,7 +48,7 @@ class php (
   package { 'php':
     ensure => $package_ensure,
     name   => $package,
-    notify => $notify,
+    notify => $notify_res,
     noop   => $noops,
   }
 
@@ -65,7 +65,7 @@ class php (
     dir_php_confd => $dir_php_confd,
     error_log     => $error_log,
     require       => Php::Mod['common'],
-    notify        => $notify,
+    notify_res    => $notify_res,
     noop          => $noops,
   }
 
@@ -78,7 +78,7 @@ class php (
     template      => $template_php_cli_ini,
     dir_php_confd => $dir_php_cli_confd,
     error_log     => $cli_error_log,
-    notify        => $notify,
+    notify_res    => $notify_res,
     noop          => $noops,
     require       => Php::Mod['cli'],
   }
@@ -91,7 +91,7 @@ class php (
     mode    => $file_mode,
     content => template('php/timezone.ini.erb'),
     require => Package['php-common'],
-    notify  => $notify,
+    notify  => $notify_res,
     noop    => $noops,
   }
 
