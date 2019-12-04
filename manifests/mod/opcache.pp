@@ -15,7 +15,6 @@ class php::mod::opcache (
   $revalidate_freq         = '2',
   $revalidate_path         = '0',
   $save_comments           = '1',
-  $load_comments           = '1',
   $fast_shutdown           = '1',
   $enable_file_override    = '0',
   $optimization_level      = '0xffffffff',
